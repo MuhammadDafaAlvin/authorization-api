@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\AuthController;
 
 Route::middleware('auth.basic')->apiResource('dosen', DosenController::class);
 Route::middleware('api.key')->get('/data', function () {
@@ -10,4 +11,11 @@ Route::middleware('api.key')->get('/data', function () {
         'message' => 'Access granted',
         'data' => 'Your protected data',
     ]);
+});
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/profile', [AuthController::class, 'profile']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
