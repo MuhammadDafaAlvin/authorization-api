@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         User::factory()->create();
 
         $this->call([DosenSeeder::class]);
+        $this->call([MahasiswaSeeder::class]);
     }
 }

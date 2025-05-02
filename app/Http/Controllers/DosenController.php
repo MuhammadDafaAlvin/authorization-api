@@ -6,17 +6,6 @@ use App\Models\Dosen;
 use Illuminate\Http\Request;
 
 /**
- * @OA\Info(
- *   title="API Dokumentasi Dosen",
- *   version="1.0",
- *   description="Dokumentasi API untuk manajemen data dosen"
- * )
- *
- * @OA\Tag(
- *   name="Dosen",
- *   description="Operasi CRUD untuk data dosen"
- * )
- *
  * @OA\Schema(
  *   schema="Dosen",
  *   type="object",

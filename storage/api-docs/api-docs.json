@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Dokumentasi Dosen",
-        "description": "Dokumentasi API untuk manajemen data dosen",
+        "title": "API Dokumentasi Kampus",
+        "description": "Dokumentasi API untuk manajemen data kampus (dosen dan mahasiswa)",
         "version": "1.0"
     },
     "paths": {
@@ -172,6 +172,182 @@
                     }
                 }
             }
+        },
+        "/api/mahasiswa": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Ambil semua data mahasiswa",
+                "operationId": "5cd79af38ea07283ea41db31685fdadb",
+                "responses": {
+                    "200": {
+                        "description": "Daftar mahasiswa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Mahasiswa"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Tambah mahasiswa baru",
+                "operationId": "2b325793b6d9bd67deb73fd27727cae1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nama",
+                                    "nim",
+                                    "jurusan"
+                                ],
+                                "properties": {
+                                    "nama": {
+                                        "type": "string",
+                                        "example": "Budi Santoso"
+                                    },
+                                    "nim": {
+                                        "type": "string",
+                                        "example": "20210001"
+                                    },
+                                    "jurusan": {
+                                        "type": "string",
+                                        "example": "Teknik Informatika"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Mahasiswa ditambahkan"
+                    },
+                    "400": {
+                        "description": "Validasi gagal"
+                    }
+                }
+            }
+        },
+        "/api/mahasiswa/{id}": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Ambil data mahasiswa berdasarkan ID",
+                "operationId": "540fcb8b88a97e479a720b1c604c387d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mahasiswa ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Mahasiswa"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Mahasiswa tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Update data mahasiswa",
+                "operationId": "09000b1b4250504e890bf4b52ce4e195",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nama": {
+                                        "type": "string",
+                                        "example": "Budi Santoso"
+                                    },
+                                    "nim": {
+                                        "type": "string",
+                                        "example": "20210001"
+                                    },
+                                    "jurusan": {
+                                        "type": "string",
+                                        "example": "Teknik Informatika"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Mahasiswa diperbarui"
+                    },
+                    "404": {
+                        "description": "Mahasiswa tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Hapus mahasiswa",
+                "operationId": "7110d1ad6c617c92e6898fe26c0b3e4f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Mahasiswa dihapus"
+                    },
+                    "404": {
+                        "description": "Mahasiswa tidak ditemukan"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -206,6 +382,42 @@
                     }
                 },
                 "type": "object"
+            },
+            "Mahasiswa": {
+                "title": "Mahasiswa",
+                "required": [
+                    "id",
+                    "nama",
+                    "nim",
+                    "jurusan"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nama": {
+                        "type": "string",
+                        "example": "Budi Santoso"
+                    },
+                    "nim": {
+                        "type": "string",
+                        "example": "20210001"
+                    },
+                    "jurusan": {
+                        "type": "string",
+                        "example": "Teknik Informatika"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
             }
         }
     },
@@ -213,6 +425,10 @@
         {
             "name": "Dosen",
             "description": "Operasi CRUD untuk data dosen"
+        },
+        {
+            "name": "Mahasiswa",
+            "description": "Operasi CRUD untuk data mahasiswa"
         }
     ]
 }

@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Dosen;
+use App\Models\Mahasiswa;
 use Illuminate\Database\Seeder;
 
-class DosenSeeder extends Seeder
+class MahasiswaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Dosen::factory(10)->create();
+        Mahasiswa::factory(10)->create();
     }
 }

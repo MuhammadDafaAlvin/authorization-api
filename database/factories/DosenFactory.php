@@ -17,8 +17,6 @@ class DosenFactory extends Factory
 
     public function definition(): array
     {
-        $faker = \Faker\Factory::create('id_ID');
-
         return [
             'nidn' => $this->faker->unique()->numerify('##########'),
             'nama_dosen' => $this->faker->name(),
