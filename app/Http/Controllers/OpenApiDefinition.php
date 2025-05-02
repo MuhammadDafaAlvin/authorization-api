@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 /**
  * @OA\Info(
- *   title="API Dokumentasi Kampus",
+ *   title="Dokumentasi API Kampus",
  *   version="1.0",
  *   description="Dokumentasi API untuk manajemen data kampus (dosen dan mahasiswa)"
  * )

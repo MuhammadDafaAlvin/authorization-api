@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Dokumentasi Kampus",
+        "title": "Dokumentasi API Kampus",
         "description": "Dokumentasi API untuk manajemen data kampus (dosen dan mahasiswa)",
         "version": "1.0"
     },
@@ -208,22 +208,49 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "nama",
                                     "nim",
-                                    "jurusan"
+                                    "nama",
+                                    "jenis_kelamin",
+                                    "alamat",
+                                    "tanggal_lahir",
+                                    "program_studi",
+                                    "angkatan",
+                                    "email"
                                 ],
                                 "properties": {
-                                    "nama": {
-                                        "type": "string",
-                                        "example": "Budi Santoso"
-                                    },
                                     "nim": {
                                         "type": "string",
                                         "example": "20210001"
                                     },
-                                    "jurusan": {
+                                    "nama": {
+                                        "type": "string",
+                                        "example": "Budi Santoso"
+                                    },
+                                    "jenis_kelamin": {
+                                        "type": "string",
+                                        "example": "L"
+                                    },
+                                    "alamat": {
+                                        "type": "string",
+                                        "example": "Jl. Merdeka No.10"
+                                    },
+                                    "tanggal_lahir": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2001-05-10"
+                                    },
+                                    "program_studi": {
                                         "type": "string",
                                         "example": "Teknik Informatika"
+                                    },
+                                    "angkatan": {
+                                        "type": "integer",
+                                        "example": 2021
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "budi@example.com"
                                     }
                                 },
                                 "type": "object"
@@ -304,9 +331,31 @@
                                         "type": "string",
                                         "example": "20210001"
                                     },
-                                    "jurusan": {
+                                    "jenis_kelamin": {
+                                        "type": "string",
+                                        "example": "L"
+                                    },
+                                    "alamat": {
+                                        "type": "string",
+                                        "example": "Jl. Merdeka No.10"
+                                    },
+                                    "tanggal_lahir": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2001-05-10"
+                                    },
+                                    "program_studi": {
                                         "type": "string",
                                         "example": "Teknik Informatika"
+                                    },
+                                    "angkatan": {
+                                        "type": "integer",
+                                        "example": 2021
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "budi@example.com"
                                     }
                                 },
                                 "type": "object"
@@ -387,26 +436,57 @@
                 "title": "Mahasiswa",
                 "required": [
                     "id",
-                    "nama",
                     "nim",
-                    "jurusan"
+                    "nama",
+                    "jenis_kelamin",
+                    "alamat",
+                    "tanggal_lahir",
+                    "program_studi",
+                    "angkatan",
+                    "email"
                 ],
                 "properties": {
                     "id": {
                         "type": "integer",
                         "example": 1
                     },
-                    "nama": {
-                        "type": "string",
-                        "example": "Budi Santoso"
-                    },
                     "nim": {
                         "type": "string",
                         "example": "20210001"
                     },
-                    "jurusan": {
+                    "nama": {
+                        "type": "string",
+                        "example": "Budi Santoso"
+                    },
+                    "jenis_kelamin": {
+                        "type": "string",
+                        "enum": [
+                            "L",
+                            "P"
+                        ],
+                        "example": "L"
+                    },
+                    "alamat": {
+                        "type": "string",
+                        "example": "Jl. Merdeka No.10"
+                    },
+                    "tanggal_lahir": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2001-05-10"
+                    },
+                    "program_studi": {
                         "type": "string",
                         "example": "Teknik Informatika"
+                    },
+                    "angkatan": {
+                        "type": "integer",
+                        "example": 2021
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "budi@example.com"
                     },
                     "created_at": {
                         "type": "string",
